@@ -1,14 +1,15 @@
 # Kanban Task Manager
 
-This template creates the basic structure for a Python project.
+Develop an application built around FastApi for backend and Angular for frontend.
+
+I built a task manager application that allows the user to *C*reate, *R*ead, *U*pdate and *D*elete a task.
 
 ## Features
 
-- Python 3.10+ (configurable)
-- Dependencies managed by pip
-- Linting based on Pylint and isort
-- Tests based on pytest
-- Custom Git hooks based on pre-commit and pre-push events
+- Create Task: Allows the user to add a task.
+- View Tasks: Allows the user view tasks stored in the database.
+- Completed Tasks: Allows the user view completed tasks in the database.
+- Today's Tasks: Allows the user to view tasks for the current date if any are in the database.
 
 ## Instructions
 
