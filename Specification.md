@@ -12,46 +12,46 @@ Será desenvolvido utilizando [Angular](https://angular.io).
 
 ## Especificações da Tarefa
 
-| Tarefa |
-|--- |
-| ID |
-| Nome |
-| Detalhes |
-| Status |
-| Prioridade |
-| Data Criação |
+| Tarefa         |
+|----------------|
+| ID             |
+| Nome           |
+| Detalhes       |
+| Status         |
+| Prioridade     |
+| Data Criação   |
 | Data Alteração |
-| ID do Projeto |
+| ID do Projeto  |
 
 ## Especificações do Projeto
 
- Projeto |
-|--- |
-| ID
-| Nome |
-| Detalhe |
-| Status |
-| Data Criação |
-| Data Alteração|
-| ID das Tarefa |
+| Projeto        |
+|----------------|
+| ID             |
+| Nome           |
+| Detalhe        |
+| Status         |
+| Data Criação   |
+| Data Alteração |
+| ID das Tarefa  |
 
 ## Especificações das Prioridades
 
-| Prioridades |
-|--- |
-| !! Big Rocks |
-| !! Hoje |
-| Prioridade alta (esta semana) |
+| Prioridades                        |
+|------------------------------------|
+| !! Big Rocks                       |
+| !! Hoje                            |
+| Prioridade alta (esta semana)      |
 | Prioridade média (assim que puder) |
-| Prioridade baixa (semana que vem) |
+| Prioridade baixa (semana que vem)  |
 
 ## Especificações do Status
 
-| Status |
-|--- |
-| Todo |
+| Status      |
+|-------------|
+| Todo        |
 | In Progress |
-| Done |
+| Done        |
 
 ## Principais Funcionalidades
 
