@@ -1,6 +1,18 @@
 # Kanban Task Manager
 
-Gestor de tarefas desenvolvido com interface de controle de tarefas no estilo [Kanban](https://pt.wikipedia.org/wiki/Kanban).
+Gestor de tarefas desenvolvido com interface de controle de tarefas no
+estilo [Kanban](https://pt.wikipedia.org/wiki/Kanban).
+
+<!-- TOC -->
+* [Kanban Task Manager](#kanban-task-manager)
+  * [Frontend - Task Manager API](#frontend---task-manager-api)
+  * [Backend - Task Manager Application](#backend---task-manager-application)
+  * [Especificações da Tarefa](#especificações-da-tarefa)
+  * [Especificações do Projeto](#especificações-do-projeto)
+  * [Especificações das Prioridades](#especificações-das-prioridades)
+  * [Especificações do Status](#especificações-do-status)
+  * [Principais Funcionalidades](#principais-funcionalidades)
+<!-- TOC -->
 
 ## Frontend - Task Manager API
 
@@ -12,38 +24,38 @@ Será desenvolvido utilizando [Angular](https://angular.io).
 
 ## Especificações da Tarefa
 
-| Tarefa         |
-|----------------|
-| ID             |
-| Nome           |
-| Detalhes       |
-| Status         |
-| Prioridade     |
-| Data Criação   |
-| Data Alteração |
-| ID do Projeto  |
+| Tarefa         | Task            |
+|----------------|-----------------|
+| Identificação  | id              |
+| Nome           | name            |
+| Detalhes       | details         |
+| Status         | status          |
+| Prioridade     | priority        |
+| Data Criação   | creation_date   |
+| Data Alteração | alteration_date |
+| ID do Projeto  | project_id      |
 
 ## Especificações do Projeto
 
-| Projeto        |
-|----------------|
-| ID             |
-| Nome           |
-| Detalhe        |
-| Status         |
-| Data Criação   |
-| Data Alteração |
-| ID das Tarefa  |
+| Projeto        | Project         |
+|:---------------|:----------------|
+| Identificação  | id              |
+| Nome           | name            |
+| Detalhe        | details         |
+| Status         | status          |
+| Data Criação   | creation_date   |
+| Data Alteração | alteration_date |
+| ID das Tarefa  | task_id         |
 
 ## Especificações das Prioridades
 
-| Prioridades                        |
-|------------------------------------|
-| !! Big Rocks                       |
-| !! Hoje                            |
-| Prioridade alta (esta semana)      |
-| Prioridade média (assim que puder) |
-| Prioridade baixa (semana que vem)  |
+| Prioridades             |
+|-------------------------|
+| !! Big Rocks            |
+| ! Hoje                  |
+| Alta (esta semana)      |
+| Média (assim que puder) |
+| Baixa (semana que vem)  |
 
 ## Especificações do Status
 
