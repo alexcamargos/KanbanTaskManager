@@ -11,6 +11,11 @@ I built a task manager application that allows the user to *C*reate, *R*ead, *U*
 - Completed Tasks: Allows the user view completed tasks in the database.
 - Today's Tasks: Allows the user to view tasks for the current date if any are in the database.
 
+## Specifications
+
+- [Specification](Specification.md)
+- [Endpoints](API_Endpoints.md)
+
 ## Instructions
 
 Duplicate the directory and start the project.
