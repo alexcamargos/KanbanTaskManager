@@ -3,8 +3,8 @@ from src.api.v1.routers import projects, tasks
 
 app = FastAPI()
 
-app.include_router(projects.router)
-app.include_router(tasks.router)
+app.include_router(projects.router, tags=["projects"])
+app.include_router(tasks.router, tags=["tasks"])
 
 
 @app.get('/')
