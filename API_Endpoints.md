@@ -7,18 +7,19 @@ Um endpoint de API é uma das extremidades de uma conexão de API, onde são rec
   * [Tarefas Endpoints](#tarefas-endpoints)
     * [GET /api/v1/tasks](#get-apiv1tasks)
     * [GET /api/v1/tasks/{id}](#get-apiv1tasksid)
-    * [GET /api/v1/tasks?status={status}](#get-apiv1tasksstatusstatus)
-    * [GET /api/v1/tasks?priority={priority}](#get-apiv1tasksprioritypriority)
-    * [GET /api/v1/tasks?project={project}](#get-apiv1tasksprojectproject)
+    * [GET /api/v1/tasks/status/{status}](#get-apiv1tasksstatusstatus)
+    * [GET /api/v1/tasks/priorities/{priority}](#get-apiv1tasksprioritiespriority)
+    * [GET /api/v1/tasks/{status}{priority}](#get-apiv1tasksstatuspriority)
+    * [GET /api/v1/tasks/project/{project_id}'](#get-apiv1tasksprojectprojectid)
     * [POST /api/v1/tasks](#post-apiv1tasks)
     * [PUT /api/v1/tasks/{id}](#put-apiv1tasksid)
     * [DELETE /api/v1/tasks/{id}](#delete-apiv1tasksid)
   * [Projetos Endpoints](#projetos-endpoints)
     * [GET /api/v1/projects](#get-apiv1projects)
-    * [GET /api/v1/projects/{id}](#get-apiv1projectsid)
+    * [GET /api/v1/projects/{project_id}](#get-apiv1projectsprojectid)
+    * [GET /api/v1/projects/{status}](#get-apiv1projectsstatus)
     * [POST /api/v1/projects](#post-apiv1projects)
     * [PUT /api/v1/projects/{id}](#put-apiv1projectsid)
-    * [GET /api/v1/projects?status={status}](#get-apiv1projectsstatusstatus)
     * [DELETE /api/v1/projects/{id}](#delete-apiv1projectsid)
 <!-- TOC -->
 
@@ -32,17 +33,32 @@ Retorna uma lista contendo todas as tarefas.
 
 Retorna as informações de uma tarefa específica.
 
-### GET /api/v1/tasks?status={status}
+- id: ID da tarefa.
+
+### GET /api/v1/tasks/status/{status}
 
 Retorna uma lista contendo todas as tarefas filtradas pelo status.
 
-### GET /api/v1/tasks?priority={priority}
+- status: Status da tarefa.
+
+### GET /api/v1/tasks/priorities/{priority}
 
 Retorna uma lista contendo todas as tarefas filtradas pela prioridade.
 
-### GET /api/v1/tasks?project={project}
+- priority: Prioridade da tarefa.
+
+### GET /api/v1/tasks/{status}{priority}
 
 Retorna uma lista contendo todas as tarefas filtradas pelo projeto.
+
+- status: Status da tarefa.
+- priority: Prioridade da tarefa.
+
+### GET /api/v1/tasks/project/{project_id}'
+
+Retorna uma lista contendo todas as tarefas filtradas pelo projeto.
+
+- project_id: ID do projeto.
 
 ### POST /api/v1/tasks
 
@@ -62,9 +78,17 @@ Deleta uma tarefa específica.
 
 Retorna uma lista contendo todos os projetos.
 
-### GET /api/v1/projects/{id}
+### GET /api/v1/projects/{project_id}
 
 Retorna as informações de uma projeto específico.
+
+- project_id: ID do projeto.
+
+### GET /api/v1/projects/{status}
+
+Retorna uma lista contendo todos os projetos filtrados pelo status.
+
+- status: Status do projeto.
 
 ### POST /api/v1/projects
 
@@ -73,10 +97,6 @@ Cria um novo projeto.
 ### PUT /api/v1/projects/{id}
 
 Atualiza as informações de um projeto específico.
-
-### GET /api/v1/projects?status={status}
-
-Retorna uma lista contendo todos os projetos filtrados pelo status.
 
 ### DELETE /api/v1/projects/{id}
 
