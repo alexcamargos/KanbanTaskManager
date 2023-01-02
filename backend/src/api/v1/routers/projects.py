@@ -6,7 +6,7 @@ from src.models.project_status import ProjectStatus
 router = APIRouter()
 
 
-@router.get('/api/v1/projects')
+@router.get('/projects')
 async def get_projects() -> list:
     """Get all projects.
 
@@ -15,7 +15,7 @@ async def get_projects() -> list:
     return PROJECT_LIST
 
 
-@router.get('/api/v1/projects/{project_id}')
+@router.get('/projects/{project_id}')
 async def get_project(project_id: int) -> list | str:
     """
     Get a project by id.
@@ -29,7 +29,7 @@ async def get_project(project_id: int) -> list | str:
         return 'Project not found.'
 
 
-@router.get('/api/v1/projects/')
+@router.get('/projects/')
 async def get_projects_by_status(status: ProjectStatus) -> list | str:
     """Get projects filtered by status.
 

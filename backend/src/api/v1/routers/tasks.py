@@ -7,7 +7,7 @@ from src.models.task_priority import TaskPriority
 router = APIRouter()
 
 
-@router.get('/api/v1/tasks')
+@router.get('/tasks')
 def get_tasks() -> list:
     """
     Get all tasks.
@@ -18,7 +18,7 @@ def get_tasks() -> list:
     return TASKS_LIST
 
 
-@router.get('/api/v1/tasks/{task_id}')
+@router.get('/tasks/{task_id}')
 def get_task_by_id(task_id: int):
     """
     Get a task by id.
@@ -33,7 +33,7 @@ def get_task_by_id(task_id: int):
         return 'Task not found.'
 
 
-@router.get('/api/v1/tasks/status/')
+@router.get('/tasks/status/')
 async def get_task_by_status(status: TaskStatus) -> list | str:
     """
     Get tasks filtered by status.
@@ -58,7 +58,7 @@ async def get_task_by_status(status: TaskStatus) -> list | str:
         return 'No tasks found.'
 
 
-@router.get('/api/v1/tasks/priority/')
+@router.get('/tasks/priority/')
 async def get_task_by_priority(priority: TaskPriority) -> list | str:
     """
     Get tasks filtered by priority.
@@ -91,7 +91,7 @@ async def get_task_by_priority(priority: TaskPriority) -> list | str:
         return 'No tasks found.'
 
 
-@router.get('/api/v1/tasks/')
+@router.get('/tasks/')
 async def get_task_by_status_and_priority(task_status: TaskStatus, task_priority: TaskPriority) -> list | str:
     """
     Get tasks filtered by status and priority.
@@ -195,7 +195,7 @@ async def get_task_by_status_and_priority(task_status: TaskStatus, task_priority
         return 'No tasks found.'
 
 
-@router.get('/api/v1/tasks/project/{project_id}')
+@router.get('/tasks/project/{project_id}')
 async def get_task_by_project(project_id: int) -> list | str:
     """
     Get all tasks filtered by project id.
