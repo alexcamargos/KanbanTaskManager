@@ -27,8 +27,11 @@ def get_task_by_id(task_id: int):
     :return: The task information or a message if the task is not found.
     """
 
+    # Parse the human-readable task id to the index of the task in the list.
+    index = task_id - 1
+
     if task_id <= len(TASKS_LIST):
-        return TASKS_LIST[task_id - 1]
+        return TASKS_LIST[index]
     else:
         raise HTTPException(status_code=404, detail='No projects found.')
 

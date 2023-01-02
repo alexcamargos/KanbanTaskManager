@@ -23,8 +23,12 @@ async def get_project(project_id: int) -> list:
     :param project_id: The id of the project.
     :return: The project information.
     """
+
+    # Parse the human-readable project id to the index of the task in the list.
+    index = project_id - 1
+
     if project_id <= len(PROJECT_LIST):
-        return PROJECT_LIST[project_id - 1]
+        return PROJECT_LIST[index]
     else:
         raise HTTPException(status_code=404, detail='No projects found.')
 
