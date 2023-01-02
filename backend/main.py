@@ -1,6 +1,5 @@
 from fastapi import FastAPI
-from src.routers import projects
-from src.routers import tasks
+from src.api.v1.routers import projects, tasks
 
 app = FastAPI()
 

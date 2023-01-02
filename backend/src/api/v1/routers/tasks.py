@@ -1,8 +1,8 @@
 from fastapi import APIRouter
 
-from ..mocks.tasks import TASKS_LIST
-from ..models.task_status import TaskStatus
-from ..models.task_priority import TaskPriority
+from src.mocks.tasks import TASKS_LIST
+from src.models.task_status import TaskStatus
+from src.models.task_priority import TaskPriority
 
 router = APIRouter()
 

@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
-from ..mocks.projects import PROJECT_LIST
-from ..models.project_status import ProjectStatus
+from src.mocks.projects import PROJECT_LIST
+from src.models.project_status import ProjectStatus
 
 router = APIRouter()
 
