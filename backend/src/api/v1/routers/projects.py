@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 
 from src.mocks.projects import PROJECT_LIST
 from src.models.project_status import ProjectStatus
@@ -16,7 +16,7 @@ async def get_projects() -> list:
 
 
 @router.get('/projects/{project_id}')
-async def get_project(project_id: int) -> list | str:
+async def get_project(project_id: int) -> list:
     """
     Get a project by id.
 
@@ -26,27 +26,37 @@ async def get_project(project_id: int) -> list | str:
     if project_id <= len(PROJECT_LIST):
         return PROJECT_LIST[project_id - 1]
     else:
-        return 'Project not found.'
+        raise HTTPException(status_code=404, detail='No projects found.')
 
 
 @router.get('/projects/')
-async def get_projects_by_status(status: ProjectStatus) -> list | str:
+async def get_projects_by_status(status: ProjectStatus) -> list:
     """Get projects filtered by status.
 
     :param status: Project status.
     :return: List of projects with the status.
     """
-    if status == ProjectStatus.todo.value:
-        projets = [project for project in PROJECT_LIST if project.status == ProjectStatus.todo.value]
 
-        return projets if projets else 'No projects found.'
+    if status == ProjectStatus.todo.value:
+        projects = [project for project in PROJECT_LIST if project.status == ProjectStatus.todo.value]
+
+        if projects:
+            return projects
+        else:
+            raise HTTPException(status_code=404, detail='No projects found.')
     elif status == ProjectStatus.in_progress.value:
         projects = [project for project in PROJECT_LIST if project.status == ProjectStatus.in_progress.value]
 
-        return projects if projects else 'No projects found.'
+        if projects:
+            return projects
+        else:
+            raise HTTPException(status_code=404, detail='No projects found.')
     elif status == ProjectStatus.done.value:
         projects = [project for project in PROJECT_LIST if project.status == ProjectStatus.done.value]
 
-        return projects if projects else 'No projects found.'
+        if projects:
+            return projects
+        else:
+            raise HTTPException(status_code=404, detail='No projects found.')
     else:
-        return 'Project not found.'
+        raise HTTPException(status_code=404, detail='No projects found.')
