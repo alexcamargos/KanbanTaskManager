@@ -70,7 +70,7 @@ async def get_task_by_status(status: TaskStatus) -> list | str:
         raise HTTPException(status_code=404, detail='No projects found.')
 
 
-@router.get('/tasks/priority/')
+@router.get('/tasks/priorities/')
 async def get_task_by_priority(priority: TaskPriority) -> list | str:
     """
     Get tasks filtered by priority.
