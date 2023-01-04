@@ -2,26 +2,28 @@ from fastapi import APIRouter, HTTPException
 
 from src.mocks.projects import PROJECT_LIST
 from src.models.project_status import ProjectStatus
+from src.schemas.project import Project
 
 router = APIRouter()
 
 
 @router.get('/projects')
-async def get_projects() -> list:
+async def get_projects() -> list[Project]:
     """Get all projects.
 
-    :return str: String with all projects information.
+    :return list: A list with all projects.
     """
+
     return [project._asdict() for project in PROJECT_LIST]
 
 
 @router.get('/projects/{project_id}')
-async def get_project(project_id: int) -> list:
+async def get_project(project_id: int) -> Project:
     """
     Get a project by id.
 
     :param project_id: The id of the project.
-    :return: The project information.
+    :return list: The project information.
     """
 
     # Parse the human-readable project id to the index of the task in the list.
@@ -34,7 +36,7 @@ async def get_project(project_id: int) -> list:
 
 
 @router.get('/projects/')
-async def get_projects_by_status(project_status: ProjectStatus) -> list:
+async def get_projects_by_status(project_status: ProjectStatus) -> list[Project]:
     """
     Get projects with status as filte.
 
@@ -43,7 +45,7 @@ async def get_projects_by_status(project_status: ProjectStatus) -> list:
                           2 - In Progress
                           3 - Done
 
-    :return: List of projects with the status.
+    :return list: List of projects with the status.
     """
 
     if project_status == ProjectStatus.todo.value:

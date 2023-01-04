@@ -1,30 +1,31 @@
 from fastapi import APIRouter, HTTPException
-
 from src.mocks.tasks import TASKS_LIST
-from src.models.task_status import TaskStatus
 from src.models.task_priority import TaskPriority
+from src.models.task_status import TaskStatus
+from src.schemas.task import Task
 
 router = APIRouter()
 
 
 @router.get('/tasks')
-def get_tasks() -> list:
+def get_tasks() -> list[Task]:
     """
     Get all tasks.
 
-    :return: List of tasks.
+    :return list: List of tasks.
     """
+
     # Serializing a Python namedtuple to json.
     return [task._asdict() for task in TASKS_LIST]
 
 
 @router.get('/tasks/{task_id}')
-def get_task_by_id(task_id: int):
+def get_task_by_id(task_id: int) -> Task:
     """
     Get a task by id.
 
     :param task_id: The id of the task.
-    :return: The task information or a message if the task is not found.
+    :return Task: The task information or a message if the task is not found.
     """
 
     # Parse the human-readable task id to the index of the task in the list.
@@ -38,7 +39,7 @@ def get_task_by_id(task_id: int):
 
 
 @router.get('/tasks/status/')
-async def get_task_by_status(task_status: TaskStatus) -> list:
+async def get_task_by_status(task_status: TaskStatus) -> list[Task]:
     """
     Get tasks filtered by status.
 
@@ -47,7 +48,7 @@ async def get_task_by_status(task_status: TaskStatus) -> list:
                           2 - In Progress
                           3 - Done
 
-    :return: A list of tasks with the status or a message if no tasks are found.
+    :return list: A list of tasks with the status or a message if no tasks are found.
     """
 
     if task_status == TaskStatus.todo.value:
@@ -76,7 +77,7 @@ async def get_task_by_status(task_status: TaskStatus) -> list:
 
 
 @router.get('/tasks/priorities/')
-async def get_task_by_priority(task_priority: TaskPriority) -> list:
+async def get_task_by_priority(task_priority: TaskPriority) -> list[Task]:
     """
     Get tasks filtered by priority.
 
@@ -86,7 +87,8 @@ async def get_task_by_priority(task_priority: TaskPriority) -> list:
                             3 - High (esta semana)
                             4 - Regular (assim que puder)
                             5 - Low (semana que vem)
-    :return: A list of tasks with the priority or a message if no tasks are found.
+
+    :return list: A list of tasks with the priority or a message if no tasks are found.
     """
 
     if task_priority == TaskPriority.big_rocks.value:
@@ -129,7 +131,7 @@ async def get_task_by_priority(task_priority: TaskPriority) -> list:
 
 
 @router.get('/tasks/')
-async def get_task_by_status_and_priority(task_status: TaskStatus, task_priority: TaskPriority) -> list:
+async def get_task_by_status_and_priority(task_status: TaskStatus, task_priority: TaskPriority) -> list[Task]:
     """
     Get tasks filtered by status and priority.
 
@@ -145,7 +147,7 @@ async def get_task_by_status_and_priority(task_status: TaskStatus, task_priority
                             4 - Regular (assim que puder)
                             5 - Low (semana que vem)
 
-    :return: A list of tasks with the status and priority or a message if no tasks were found.
+    :return list: A list of tasks with the status and priority or a message if no tasks were found.
     """
 
     if task_priority == TaskPriority.big_rocks.value:
@@ -288,12 +290,12 @@ async def get_task_by_status_and_priority(task_status: TaskStatus, task_priority
 
 
 @router.get('/tasks/project/{project_id}')
-async def get_task_by_project(project_id: int) -> list:
+async def get_task_by_project(project_id: int) -> list[Task]:
     """
     Get all tasks filtered by project id.
 
     :param project_id: An id of the project.
-    :return: List of tasks or message if no tasks found.
+    :return list: List of tasks or message if no tasks found.
     """
 
     # List all project id in TASKS_LIST.
