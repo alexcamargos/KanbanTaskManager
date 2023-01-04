@@ -12,7 +12,7 @@ async def get_projects() -> list:
 
     :return str: String with all projects information.
     """
-    return PROJECT_LIST
+    return [project._asdict() for project in PROJECT_LIST]
 
 
 @router.get('/projects/{project_id}')
@@ -28,7 +28,7 @@ async def get_project(project_id: int) -> list:
     index = project_id - 1
 
     if project_id <= len(PROJECT_LIST):
-        return PROJECT_LIST[index]
+        return PROJECT_LIST[index]._asdict()
     else:
         raise HTTPException(status_code=404, detail='No projects found.')
 
@@ -47,21 +47,21 @@ async def get_projects_by_status(project_status: ProjectStatus) -> list:
     """
 
     if project_status == ProjectStatus.todo.value:
-        projects = [project for project in PROJECT_LIST if project.status == ProjectStatus.todo.value]
+        projects = [project._asdict() for project in PROJECT_LIST if project.status == ProjectStatus.todo.value]
 
         if projects:
             return projects
         else:
             raise HTTPException(status_code=404, detail='No projects found.')
     elif project_status == ProjectStatus.in_progress.value:
-        projects = [project for project in PROJECT_LIST if project.status == ProjectStatus.in_progress.value]
+        projects = [project._asdict() for project in PROJECT_LIST if project.status == ProjectStatus.in_progress.value]
 
         if projects:
             return projects
         else:
             raise HTTPException(status_code=404, detail='No projects found.')
     elif project_status == ProjectStatus.done.value:
-        projects = [project for project in PROJECT_LIST if project.status == ProjectStatus.done.value]
+        projects = [project._asdict() for project in PROJECT_LIST if project.status == ProjectStatus.done.value]
 
         if projects:
             return projects
