@@ -1,9 +1,9 @@
-from enum import Enum
+from enum import IntEnum
 
 
-class TaskPriority(str, Enum):
-    big_rocks = "Big Rocks"
-    today = "Today"
-    high = "High"
-    regular = "regular"
-    low = "Low"
+class TaskPriority(IntEnum):
+    big_rocks = 1
+    today = 2
+    high = 3
+    regular = 4
+    low = 5

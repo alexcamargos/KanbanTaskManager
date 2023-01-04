@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import IntEnum
 
 
-class ProjectStatus(str, Enum):
-    todo = "ToDo"
-    in_progress = "In Progress"
-    done = "done"
+class ProjectStatus(IntEnum):
+    todo = 1
+    in_progress = 2
+    done = 3
