@@ -1,3 +1,24 @@
+#!/usr/bin/env python
+# encoding: utf-8
+#
+#  ------------------------------------------------------------------------------
+#  Name: tasks.py
+#  Version: 0.0.1
+#  Summary: Kanban Task Manager
+#           This is a simple Task Manager that makes it easy for you to keep
+#           track of all Tasks and To Dos.
+#
+#  Author: Alexsander Lopes Camargos
+#  Author-email: alcamargos@vivaldi.net
+#
+#  License: MIT
+#  ------------------------------------------------------------------------------
+
+"""Kanban Task Manager.
+
+This is a simple Task Manager that makes it easy for you to keep track of all Tasks and To Dos.
+"""
+
 from fastapi import APIRouter, HTTPException
 from src.mocks.tasks import TASKS_LIST
 from src.models.task_priority import TaskPriority
