@@ -49,21 +49,21 @@ Será desenvolvido utilizando [Angular](https://angular.io).
 
 ## Especificações das Prioridades
 
-| Prioridades             |
-|-------------------------|
-| !! Big Rocks            |
-| ! Hoje                  |
-| Alta (esta semana)      |
-| Média (assim que puder) |
-| Baixa (semana que vem)  |
+| Prioridades             | Representação  |
+|-------------------------|----------------|
+| !! Big Rocks            | 1              |
+| ! Hoje                  | 2              |
+| Alta (esta semana)      | 3              |
+| Média (assim que puder) | 4              |
+| Baixa (semana que vem)  | 5              |
 
 ## Especificações do Status
 
-| Status      |
-|-------------|
-| Todo        |
-| In Progress |
-| Done        |
+| Status      | Representação |
+|-------------|---------------|
+| Todo        | 1             |
+| In Progress | 2             |
+| Done        | 3             |
 
 ## Principais Funcionalidades
 
