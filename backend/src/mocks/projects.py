@@ -1,18 +1,6 @@
-from typing import NamedTuple
 import datetime
 
-from ..schemas.status import Status
-
-
-class Project(NamedTuple):
-    id: int
-    name: str
-    details: str
-    status: int
-    creation_date: datetime.date
-    alteration_date: datetime.date
-    tasks_ids: list
-
+from ..schemas.project import Project
 
 _project_01 = Project(id=1,
                       name='Project 01',
