@@ -37,29 +37,33 @@ def get_task_by_id(task_id: int):
 
 
 @router.get('/tasks/status/')
-async def get_task_by_status(status: TaskStatus) -> list | str:
+async def get_task_by_status(task_status: TaskStatus) -> list:
     """
     Get tasks filtered by status.
 
-    :param status: Task status.
+    :param task_status: Task priority.
+                          1 - Todo
+                          2 - In Progress
+                          3 - Done
+
     :return: A list of tasks with the status or a message if no tasks are found.
     """
 
-    if status == TaskStatus.todo.value:
+    if task_status == TaskStatus.todo.value:
         tasks = [task for task in TASKS_LIST if task.status == TaskStatus.todo.value]
 
         if tasks:
             return tasks
         else:
             raise HTTPException(status_code=404, detail='No projects found.')
-    elif status == TaskStatus.in_progress.value:
+    elif task_status == TaskStatus.in_progress.value:
         tasks = [task for task in TASKS_LIST if task.status == TaskStatus.in_progress.value]
 
         if tasks:
             return tasks
         else:
             raise HTTPException(status_code=404, detail='No projects found.')
-    elif status == TaskStatus.done.value:
+    elif task_status == TaskStatus.done.value:
         tasks = [task for task in TASKS_LIST if task.status == TaskStatus.done.value]
 
         if tasks:
@@ -71,43 +75,48 @@ async def get_task_by_status(status: TaskStatus) -> list | str:
 
 
 @router.get('/tasks/priorities/')
-async def get_task_by_priority(priority: TaskPriority) -> list | str:
+async def get_task_by_priority(task_priority: TaskPriority) -> list:
     """
     Get tasks filtered by priority.
 
-    :param priority: Task priority.
+    :param task_priority: Task priority.
+                            1 - Big Rocks
+                            2 - Today
+                            3 - High (esta semana)
+                            4 - Regular (assim que puder)
+                            5 - Low (semana que vem)
     :return: A list of tasks with the priority or a message if no tasks are found.
     """
 
-    if priority == TaskPriority.big_rocks.value:
+    if task_priority == TaskPriority.big_rocks.value:
         tasks = [task for task in TASKS_LIST if task.priority == TaskPriority.big_rocks.value]
 
         if tasks:
             return tasks
         else:
             raise HTTPException(status_code=404, detail='No projects found.')
-    elif priority == TaskPriority.today.value:
+    elif task_priority == TaskPriority.today.value:
         tasks = [task for task in TASKS_LIST if task.priority == TaskPriority.today.value]
 
         if tasks:
             return tasks
         else:
             raise HTTPException(status_code=404, detail='No projects found.')
-    elif priority == TaskPriority.high.value:
+    elif task_priority == TaskPriority.high.value:
         tasks = [task for task in TASKS_LIST if task.priority == TaskPriority.high.value]
 
         if tasks:
             return tasks
         else:
             raise HTTPException(status_code=404, detail='No projects found.')
-    elif priority == TaskPriority.regular.value:
+    elif task_priority == TaskPriority.regular.value:
         tasks = [task for task in TASKS_LIST if task.priority == TaskPriority.regular.value]
 
         if tasks:
             return tasks
         else:
             raise HTTPException(status_code=404, detail='No projects found.')
-    elif priority == TaskPriority.low.value:
+    elif task_priority == TaskPriority.low.value:
         tasks = [task for task in TASKS_LIST if task.priority == TaskPriority.low.value]
 
         if tasks:
@@ -119,12 +128,21 @@ async def get_task_by_priority(priority: TaskPriority) -> list | str:
 
 
 @router.get('/tasks/')
-async def get_task_by_status_and_priority(task_status: TaskStatus, task_priority: TaskPriority) -> list | str:
+async def get_task_by_status_and_priority(task_status: TaskStatus, task_priority: TaskPriority) -> list:
     """
     Get tasks filtered by status and priority.
 
-    :param task_status: Task status.
+    :param task_status: Task priority.
+                          1 - Todo
+                          2 - In Progress
+                          3 - Done
     :param task_priority: Task priority.
+                            1 - Big Rocks
+                            2 - Today
+                            3 - High (esta semana)
+                            4 - Regular (assim que puder)
+                            5 - Low (semana que vem)
+
     :return: A list of tasks with the status and priority or a message if no tasks were found.
     """
 
@@ -268,7 +286,7 @@ async def get_task_by_status_and_priority(task_status: TaskStatus, task_priority
 
 
 @router.get('/tasks/project/{project_id}')
-async def get_task_by_project(project_id: int) -> list | str:
+async def get_task_by_project(project_id: int) -> list:
     """
     Get all tasks filtered by project id.
 
