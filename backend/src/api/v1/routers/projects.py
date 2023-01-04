@@ -34,28 +34,33 @@ async def get_project(project_id: int) -> list:
 
 
 @router.get('/projects/')
-async def get_projects_by_status(status: ProjectStatus) -> list:
-    """Get projects filtered by status.
+async def get_projects_by_status(project_status: ProjectStatus) -> list:
+    """
+    Get projects with status as filte.
 
-    :param status: Project status.
+    :param project_status: Task priority.
+                          1 - Todo
+                          2 - In Progress
+                          3 - Done
+
     :return: List of projects with the status.
     """
 
-    if status == ProjectStatus.todo.value:
+    if project_status == ProjectStatus.todo.value:
         projects = [project for project in PROJECT_LIST if project.status == ProjectStatus.todo.value]
 
         if projects:
             return projects
         else:
             raise HTTPException(status_code=404, detail='No projects found.')
-    elif status == ProjectStatus.in_progress.value:
+    elif project_status == ProjectStatus.in_progress.value:
         projects = [project for project in PROJECT_LIST if project.status == ProjectStatus.in_progress.value]
 
         if projects:
             return projects
         else:
             raise HTTPException(status_code=404, detail='No projects found.')
-    elif status == ProjectStatus.done.value:
+    elif project_status == ProjectStatus.done.value:
         projects = [project for project in PROJECT_LIST if project.status == ProjectStatus.done.value]
 
         if projects:
