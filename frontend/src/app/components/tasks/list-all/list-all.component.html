@@ -1,0 +1,7 @@
+<div class="container">
+  <h1>Tasks List</h1>
+
+  <div *ngFor="let tasks of allTasks" class="tasks-lists">
+    <app-task *ngFor="let task of tasks" [task]="task"></app-task>
+  </div>
+</div>
