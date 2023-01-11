@@ -1,0 +1,54 @@
+.container
+  .card
+    max-width: 350px
+    margin-bottom: .5rem
+
+    .task-title
+      font-size: 1.3rem
+      font-weight: bold
+      margin-bottom: .5rem
+
+    &--content
+      margin: 0.12rem
+
+      .task-details
+        font-size: 1.2rem
+        margin-bottom: 1rem
+
+      .task-categories
+        display: flex
+        justify-content: space-around
+        margin-bottom: 1rem
+
+        .task-status,
+        .task-priority
+          display: inline-flex
+          object-position: center
+          align-items: center
+          font-size: 1.2rem
+          text-align: center
+
+          &:hover
+            background-color: #e5e5e5
+
+      .task--project
+        font-size: 1.2rem
+        margin-bottom: 0.5rem
+
+      .task-creation-date
+        display: flex
+        align-items: center
+        gap: 1rem
+        font-size: 1.2rem
+        margin-bottom: 0.5rem
+
+        p
+          margin: 0
+
+    &--actions
+      justify-content: space-around
+      padding: 1rem
+
+    &--footer
+      font-size: 1.2rem
+      margin: 1rem

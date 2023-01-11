@@ -1,0 +1,47 @@
+<div class="container">
+  <mat-card class="card">
+    <mat-card-header class="card--header">
+      <mat-card-title class="task-title">{{ task.name }}</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="card--content">
+      <p class="task-details">{{ task.details }}</p>
+
+      <div class="task-categories">
+        <span class="task-status">{{ task.status | taskStatus }}</span>
+        <span class="task-priority">{{ task.priority | taskPriority }}</span>
+      </div>
+
+      <div class="task--project">
+        <span>Project: </span>
+        <span>{{ task.project_id }}</span>
+      </div>
+
+      <div class="task-creation-date">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Task creation date"
+          fontIcon="calendar_month"
+        ></mat-icon>
+
+        <p>{{ task.creation_date | date : "dd/MM/yyyy" }}</p>
+      </div>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-actions class="card--actions">
+      <button mat-icon-button color="primary" aria-label="Mark a task complete">
+        <mat-icon>check</mat-icon>
+      </button>
+
+      <button mat-icon-button color="primary" aria-label="Edit a task">
+        <mat-icon>edit_note</mat-icon>
+      </button>
+
+      <button mat-icon-button color="warn" aria-label="Delete a task">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
