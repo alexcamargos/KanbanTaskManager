@@ -1,20 +1,35 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { ListComponent } from './components/tasks/list/list.component';
+import { AngularMaterialModule } from './material.module';
+
+import { TaskPriorityPipe } from './pipes/task-priority.pipe';
+import { TaskStatusPipe } from './pipes/task-status.pipe';
+
+import { TaskComponent } from './components/shared/task/task.component';
+
+import { AppRoutingModule } from './routes/app-routing.module';
+import { AppComponent } from './components/app-root/app-root.component';
+import { ListAllTasksComponent } from './components/tasks/list-all/list-all.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent
+    TaskPriorityPipe,
+    TaskStatusPipe,
+    TaskComponent,
+    ListAllTasksComponent,
   ],
   imports: [
+    AngularMaterialModule,
+    AppRoutingModule,
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    HttpClientModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [HttpClientModule],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
