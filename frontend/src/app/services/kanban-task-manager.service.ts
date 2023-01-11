@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 
 import { Task } from '../models/task.model';
+import { Project } from '../models/project.model';
 
 @Injectable({
   providedIn: 'root',
@@ -23,5 +24,13 @@ export class KanbanTaskManagerService {
 
   getTaskById(id: number): Observable<Task> {
     return this.http.get<Task>(`${this.apiUrl}/tasks/${id}`);
+  }
+
+  getAllProjects(): Observable<Project> {
+    return this.http.get<Project>(`${this.apiUrl}/projects`);
+  }
+
+  getProjectById(id: number): Observable<Project> {
+    return this.http.get<Project>(`${this.apiUrl}/projects/${id}`);
   }
 }
