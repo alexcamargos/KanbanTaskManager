@@ -18,6 +18,7 @@
 This is a simple Task Manager that makes it easy for you to keep track of all Tasks and To Dos.
 """
 
+import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -48,3 +49,7 @@ async def root() -> dict:
 async def health_check() -> dict:
     """Health Check."""
     return {'message': 'All systems are operational.'}
+
+
+if __name__ == '__main__':
+    uvicorn.run(app)
