@@ -4,6 +4,9 @@ Um endpoint de API é uma das extremidades de uma conexão de API, onde são rec
 
 <!-- TOC -->
 * [API Endpoints](#api-endpoints)
+  * [Defaults Enpoints](#defaults-enpoints)
+    * [GET /](#get-)
+    * [GET /health](#get-health)
   * [Tarefas Endpoints](#tarefas-endpoints)
     * [GET /api/v1/tasks](#get-apiv1tasks)
     * [GET /api/v1/tasks/{id}](#get-apiv1tasksid)
@@ -22,6 +25,16 @@ Um endpoint de API é uma das extremidades de uma conexão de API, onde são rec
     * [PUT /api/v1/projects/{id}](#put-apiv1projectsid)
     * [DELETE /api/v1/projects/{id}](#delete-apiv1projectsid)
 <!-- TOC -->
+
+## Defaults Enpoints
+
+### GET /
+
+Retorna a identificação da API.
+
+### GET /health
+
+Monitora se o sistema está operando sem apresentar problemas.
 
 ## Tarefas Endpoints
 

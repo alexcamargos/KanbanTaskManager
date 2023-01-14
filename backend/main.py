@@ -39,6 +39,12 @@ app.include_router(projects.router, prefix='/api/v1', tags=["projects"])
 app.include_router(tasks.router, prefix='/api/v1', tags=["tasks"])
 
 
-@app.get('/')
-async def root():
+@app.get('/', tags=['root'])
+async def root() -> dict:
     return {'message': 'Kanban Task Manager API V1.'}
+
+
+@app.get('/health', tags=['health'])
+async def health_check() -> dict:
+    """Health Check."""
+    return {'message': 'All systems are operational.'}
