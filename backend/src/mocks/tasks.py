@@ -21,99 +21,117 @@ This is a simple Task Manager that makes it easy for you to keep track of all Ta
 This is mock data for the tasks.
 """
 
-import datetime
+from datetime import datetime
 
-from ..schemas.task import Task
+_task_01: dict[str, int | str | datetime] = {
+    'id': 1,
+    'name': 'Task number 01',
+    'details': 'Detailed description of Task number 01.',
+    'status': 1,
+    'priority': 5,
+    'creationDate': datetime(2022, 12, 15),
+    'alterationDate': datetime(2022, 12, 15),
+    'projectID': 1
+}
 
-_task_01 = Task(id=1,
-                name='Task 01',
-                details='Detailed description of task 01.',
-                status=1,
-                priority=5,
-                creation_date=datetime.date(2022, 12, 15),
-                alteration_date=datetime.date(2022, 12, 15),
-                project_id=1)
+_task_02: dict[str, int | str | datetime] = {
+    'id': 2,
+    'name': 'Task number 02',
+    'details': 'Detailed description of Task number 02.',
+    'status': 2,
+    'priority': 4,
+    'creationDate': datetime(2022, 12, 15),
+    'alterationDate': datetime(2022, 12, 17),
+    'projectID': 1
+}
 
-_task_02 = Task(id=2,
-                name='Task 02',
-                details='Detailed description of task 02.',
-                status=2,
-                priority=4,
-                creation_date=datetime.date(2022, 12, 15),
-                alteration_date=datetime.date(2022, 12, 17),
-                project_id=1)
+_task_03: dict[str, int | str | datetime] = {
+    'id': 3,
+    'name': 'Task number 03',
+    'details': 'Detailed description of Task number 03.',
+    'status': 1,
+    'priority': 4,
+    'creationDate': datetime(2022, 12, 15),
+    'alterationDate': datetime(2022, 12, 20),
+    'projectID': 2
+}
 
-_task_03 = Task(id=3,
-                name='Task 03',
-                details='Detailed description of task 03.',
-                status=1,
-                priority=4,
-                creation_date=datetime.date(2022, 12, 15),
-                alteration_date=datetime.date(2022, 12, 20),
-                project_id=2)
+_task_04: dict[str, int | str | datetime] = {
+    'id': 4,
+    'name': 'Task number 04',
+    'details': 'Detailed description of Task number 04.',
+    'status': 1,
+    'priority': 3,
+    'creationDate': datetime(2022, 12, 15),
+    'alterationDate': datetime(2022, 12, 15),
+    'projectID': 2
+}
 
-_task_04 = Task(id=4,
-                name='Task 04',
-                details='Detailed description of task 04.',
-                status=1,
-                priority=3,
-                creation_date=datetime.date(2022, 12, 15),
-                alteration_date=datetime.date(2022, 12, 15),
-                project_id=2)
+_task_05: dict[str, int | str | datetime] = {
+    'id': 5,
+    'name': 'Task number 05',
+    'details': 'Detailed description of Task number 05.',
+    'status': 3,
+    'priority': 5,
+    'creationDate': datetime(2022, 12, 15),
+    'alterationDate': datetime(2022, 12, 15),
+    'projectID': 3
+}
 
-_task_05 = Task(id=5,
-                name='Task 05',
-                details='Detailed description of task 05.',
-                status=3,
-                priority=5,
-                creation_date=datetime.date(2022, 12, 15),
-                alteration_date=datetime.date(2022, 12, 15),
-                project_id=3)
+_task_06: dict[str, int | str | datetime] = {
+    'id': 6,
+    'name': 'Task number 06',
+    'details': 'Detailed description of Task number 06.',
+    'status': 1,
+    'priority': 2,
+    'creationDate': datetime(2022, 12, 15),
+    'alterationDate': datetime(2022, 12, 16),
+    'projectID': 3
+}
 
-_task_06 = Task(id=6,
-                name='Task 06',
-                details='Detailed description of task 06.',
-                status=1,
-                priority=2,
-                creation_date=datetime.date(2022, 12, 15),
-                alteration_date=datetime.date(2022, 12, 16),
-                project_id=3)
+_task_07: dict[str, int | str | datetime] = {
+    'id': 7,
+    'name': 'Task number 07',
+    'details': 'Detailed description of Task number 07.',
+    'status': 2,
+    'priority': 3,
+    'creationDate': datetime(2022, 12, 16),
+    'alterationDate': datetime(2022, 12, 19),
+    'projectID': 1
+}
 
-_task_07 = Task(id=7,
-                name='Task 07',
-                details='Detailed description of task 07.',
-                status=2,
-                priority=3,
-                creation_date=datetime.date(2022, 12, 16),
-                alteration_date=datetime.date(2022, 12, 19),
-                project_id=1)
+_task_08: dict[str, int | str | datetime] = {
+    'id': 8,
+    'name': 'Task number 08',
+    'details': 'Detailed description of Task number 08.',
+    'status': 1,
+    'priority': 4,
+    'creationDate': datetime(2022, 12, 18),
+    'alterationDate': datetime(2022, 12, 20),
+    'projectID': 1
+}
 
-_task_08 = Task(id=8,
-                name='Task 08',
-                details='Detailed description of task 08.',
-                status=1,
-                priority=4,
-                creation_date=datetime.date(2022, 12, 18),
-                alteration_date=datetime.date(2022, 12, 20),
-                project_id=1)
+_task_09: dict[str, int | str | datetime] = {
+    'id': 9,
+    'name': 'Task number 09',
+    'details': 'Detailed description of Task number 09.',
+    'status': 3,
+    'priority': 5,
+    'creationDate': datetime(2022, 12, 19),
+    'alterationDate': datetime(2022, 12, 20),
+    'projectID': 2
+}
 
-_task_09 = Task(id=9,
-                name='Task 09',
-                details='Detailed description of task 09.',
-                status=3,
-                priority=5,
-                creation_date=datetime.date(2022, 12, 19),
-                alteration_date=datetime.date(2022, 12, 20),
-                project_id=2)
-
-_task_10 = Task(id=10,
-                name='Task 10',
-                details='Detailed description of task 10.',
-                status=1,
-                priority=4,
-                creation_date=datetime.date(2022, 12, 20),
-                alteration_date=datetime.date(2022, 12, 20),
-                project_id=2)
+_task_10: dict[str, int | str | datetime] = {
+    'id': 10,
+    'name': 'Task number 10',
+    'details': 'Detailed description of Task number 10.',
+    'status': 1,
+    'priority': 4,
+    'creationDate': datetime(2022, 12, 20),
+    'alterationDate': datetime(2022, 12, 20),
+    'projectID': 2
+}
 
 TASKS_LIST = [_task_01, _task_02, _task_03, _task_04, _task_05, _task_06, _task_07, _task_08, _task_09, _task_10]
 
