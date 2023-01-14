@@ -2,7 +2,7 @@
 # encoding: utf-8
 #
 #  ------------------------------------------------------------------------------
-#  Name: task.py
+#  Name: tasks.py
 #  Version: 0.0.1
 #  Summary: Kanban Task Manager
 #           This is a simple Task Manager that makes it easy for you to keep
@@ -17,18 +17,40 @@
 """Kanban Task Manager.
 
 This is a simple Task Manager that makes it easy for you to keep track of all Tasks and To Dos.
+
+This is mock data for the tasks.
 """
 
-import datetime
-from typing import NamedTuple
+from datetime import datetime
+from typing import Sequence
+
+from pydantic import Field
+from pydantic.main import BaseModel
+
+from ..models.task import TaskModel
 
 
-class Task(NamedTuple):
+class TaskResponse(BaseModel):
     id: int
     name: str
     details: str
     status: int
     priority: int
-    creation_date: datetime.date
-    alteration_date: datetime.date
-    project_id: int
+    creation_date: datetime = Field(..., alias="creationDate")
+    alteration_date: datetime = Field(..., alias="alterationDate")
+    project_id: int = Field(..., alias="projectID")
+
+    @classmethod
+    def from_task_instance(cls, task: TaskModel) -> "TaskResponse":
+        return cls(**task.dict())
+
+
+class MultipleTaskResponse(BaseModel):
+    tasks: list[TaskResponse]
+    tasks_count: int
+
+    @classmethod
+    def from_multiple_task_instance(cls,
+                                    tasks: Sequence[TaskModel],
+                                    tasks_count: int) -> "MultipleTaskResponse":
+        return cls(tasks=[task for task in tasks], tasks_count=tasks_count)
