@@ -13,7 +13,6 @@
 #
 #  License: MIT
 #  ------------------------------------------------------------------------------
-
 """Kanban Task Manager.
 
 This is a simple Task Manager that makes it easy for you to keep track of all Tasks and To Dos.
@@ -36,9 +35,9 @@ class TaskResponse(BaseModel):
     details: str
     status: int
     priority: int
-    creation_date: datetime = Field(..., alias="creationDate")
-    alteration_date: datetime = Field(..., alias="alterationDate")
-    project_id: int = Field(..., alias="projectID")
+    creation_date: datetime
+    alteration_date: datetime
+    project_id: int
 
     @classmethod
     def from_task_instance(cls, task: TaskModel) -> "TaskResponse":
@@ -50,7 +49,8 @@ class MultipleTaskResponse(BaseModel):
     tasks_count: int
 
     @classmethod
-    def from_multiple_task_instance(cls,
-                                    tasks: Sequence[TaskModel],
-                                    tasks_count: int) -> "MultipleTaskResponse":
-        return cls(tasks=[task for task in tasks], tasks_count=tasks_count)
+    def from_multiple_task_instance(
+            cls, tasks: Sequence[TaskModel],
+            tasks_count: int) -> "MultipleTaskResponse":
+        return cls(tasks=[task for task in tasks],
+                   tasks_count=tasks_count)  # type: ignore
