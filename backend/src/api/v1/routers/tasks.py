@@ -22,11 +22,10 @@ This is mock data for the tasks.
 
 from fastapi import APIRouter, HTTPException
 
+from src.core.tasks import get_task_response, get_multiple_tasks_response
 from src.mocks.tasks import TASKS_LIST
-
-from src.models.task_priority import TaskPriority
-from src.models.task_status import TaskStatus
-
+from src.models.priorities import TaskPriority
+from src.models.status import TaskStatus
 from src.schemas.task import TaskResponse, MultipleTaskResponse
 
 router = APIRouter()
@@ -37,30 +36,28 @@ def get_tasks() -> MultipleTaskResponse:
     """
     Get all tasks.
 
-    :return list: List of tasks.
+    :return MultipleTaskResponse: An instance of MultipleTaskResponse.
     """
 
-    return MultipleTaskResponse.from_multiple_task_instance(
-        TASKS_LIST, len(TASKS_LIST))
+    return get_multiple_tasks_response(TASKS_LIST)
 
 
-@router.get('/tasks/{task_id}')
+@router.get('/tasks/{task_id}', response_model=TaskResponse)
 def get_task_by_id(task_id: int) -> TaskResponse:
     """
     Get a task by id.
 
     :param task_id: The id of the task.
-    :return TaskResponse: The task information or a message if the task is not found.
+    :return TaskResponse: An instance of TaskResponse or a message if the task is not found.
     """
 
     # Parse the human-readable task id to the index of the task in the list.
     index = task_id - 1
 
-    if task_id <= len(TASKS_LIST):
-        # Serializing a Python namedtuple to json.
-        return TASKS_LIST[index]._asdict()
-    else:
-        raise HTTPException(status_code=404, detail='No projects found.')
+    try:
+        return get_task_response(TASKS_LIST[index])
+    except IndexError:
+        raise HTTPException(status_code=404, detail=f'Task with ID #{task_id} not found.')
 
 
 @router.get('/tasks/status/')
@@ -206,7 +203,7 @@ async def get_task_by_status_and_priority(
         tasks = [
             task for task in TASKS_LIST
             if task.priority == TaskPriority.big_rocks.value
-            and task.status == task_status.value
+               and task.status == task_status.value
         ]
 
         if task_status.value == TaskStatus.todo.value:
@@ -247,7 +244,7 @@ async def get_task_by_status_and_priority(
         tasks = [
             task for task in TASKS_LIST
             if task.priority == TaskPriority.today.value
-            and task.status == task_status.value
+               and task.status == task_status.value
         ]
 
         if task_status.value == TaskStatus.todo.value:
@@ -288,7 +285,7 @@ async def get_task_by_status_and_priority(
         tasks = [
             task for task in TASKS_LIST
             if task.priority == TaskPriority.high.value
-            and task.status == task_status.value
+               and task.status == task_status.value
         ]
 
         if task_status.value == TaskStatus.todo.value:
@@ -330,7 +327,7 @@ async def get_task_by_status_and_priority(
         tasks = [
             task for task in TASKS_LIST
             if task.priority == TaskPriority.regular.value
-            and task.status == task_status.value
+               and task.status == task_status.value
         ]
 
         if task_status.value == TaskStatus.todo.value:
@@ -372,7 +369,7 @@ async def get_task_by_status_and_priority(
         tasks = [
             task for task in TASKS_LIST
             if task.priority == TaskPriority.low.value
-            and task.status == task_status.value
+               and task.status == task_status.value
         ]
 
         if task_status.value == TaskStatus.todo.value:

@@ -22,7 +22,7 @@ This is a simple Task Manager that makes it easy for you to keep track of all Ta
 from fastapi import APIRouter, HTTPException
 
 from src.mocks.projects import PROJECT_LIST
-from src.models.project_status import ProjectStatus
+from src.models.status import ProjectStatus
 from src.schemas.project import Project
 
 router = APIRouter()
@@ -44,6 +44,7 @@ async def get_project(project_id: int) -> Project:
     Get a project by id.
 
     :param project_id: The id of the project.
+    
     :return list: The project information.
     """
 
