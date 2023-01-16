@@ -29,9 +29,9 @@ _task_01: dict[str, int | str | datetime] = {
     'details': 'Detailed description of Task number 01.',
     'status': 1,
     'priority': 5,
-    'creationDate': datetime(2022, 12, 15),
-    'alterationDate': datetime(2022, 12, 15),
-    'projectID': 1
+    'creation_date': datetime(2022, 12, 15),
+    'alteration_date': datetime(2022, 12, 15),
+    'project_id': 1
 }
 
 _task_02: dict[str, int | str | datetime] = {
@@ -40,9 +40,9 @@ _task_02: dict[str, int | str | datetime] = {
     'details': 'Detailed description of Task number 02.',
     'status': 2,
     'priority': 4,
-    'creationDate': datetime(2022, 12, 15),
-    'alterationDate': datetime(2022, 12, 17),
-    'projectID': 1
+    'creation_date': datetime(2022, 12, 15),
+    'alteration_date': datetime(2022, 12, 17),
+    'project_id': 1
 }
 
 _task_03: dict[str, int | str | datetime] = {
@@ -51,9 +51,9 @@ _task_03: dict[str, int | str | datetime] = {
     'details': 'Detailed description of Task number 03.',
     'status': 1,
     'priority': 4,
-    'creationDate': datetime(2022, 12, 15),
-    'alterationDate': datetime(2022, 12, 20),
-    'projectID': 2
+    'creation_date': datetime(2022, 12, 15),
+    'alteration_date': datetime(2022, 12, 20),
+    'project_id': 2
 }
 
 _task_04: dict[str, int | str | datetime] = {
@@ -62,9 +62,9 @@ _task_04: dict[str, int | str | datetime] = {
     'details': 'Detailed description of Task number 04.',
     'status': 1,
     'priority': 3,
-    'creationDate': datetime(2022, 12, 15),
-    'alterationDate': datetime(2022, 12, 15),
-    'projectID': 2
+    'creation_date': datetime(2022, 12, 15),
+    'alteration_date': datetime(2022, 12, 15),
+    'project_id': 2
 }
 
 _task_05: dict[str, int | str | datetime] = {
@@ -73,9 +73,9 @@ _task_05: dict[str, int | str | datetime] = {
     'details': 'Detailed description of Task number 05.',
     'status': 3,
     'priority': 5,
-    'creationDate': datetime(2022, 12, 15),
-    'alterationDate': datetime(2022, 12, 15),
-    'projectID': 3
+    'creation_date': datetime(2022, 12, 15),
+    'alteration_date': datetime(2022, 12, 15),
+    'project_id': 3
 }
 
 _task_06: dict[str, int | str | datetime] = {
@@ -84,9 +84,9 @@ _task_06: dict[str, int | str | datetime] = {
     'details': 'Detailed description of Task number 06.',
     'status': 1,
     'priority': 2,
-    'creationDate': datetime(2022, 12, 15),
-    'alterationDate': datetime(2022, 12, 16),
-    'projectID': 3
+    'creation_date': datetime(2022, 12, 15),
+    'alteration_date': datetime(2022, 12, 16),
+    'project_id': 3
 }
 
 _task_07: dict[str, int | str | datetime] = {
@@ -95,9 +95,9 @@ _task_07: dict[str, int | str | datetime] = {
     'details': 'Detailed description of Task number 07.',
     'status': 2,
     'priority': 3,
-    'creationDate': datetime(2022, 12, 16),
-    'alterationDate': datetime(2022, 12, 19),
-    'projectID': 1
+    'creation_date': datetime(2022, 12, 16),
+    'alteration_date': datetime(2022, 12, 19),
+    'project_id': 1
 }
 
 _task_08: dict[str, int | str | datetime] = {
@@ -106,9 +106,9 @@ _task_08: dict[str, int | str | datetime] = {
     'details': 'Detailed description of Task number 08.',
     'status': 1,
     'priority': 4,
-    'creationDate': datetime(2022, 12, 18),
-    'alterationDate': datetime(2022, 12, 20),
-    'projectID': 1
+    'creation_date': datetime(2022, 12, 18),
+    'alteration_date': datetime(2022, 12, 20),
+    'project_id': 1
 }
 
 _task_09: dict[str, int | str | datetime] = {
@@ -117,9 +117,9 @@ _task_09: dict[str, int | str | datetime] = {
     'details': 'Detailed description of Task number 09.',
     'status': 3,
     'priority': 5,
-    'creationDate': datetime(2022, 12, 19),
-    'alterationDate': datetime(2022, 12, 20),
-    'projectID': 2
+    'creation_date': datetime(2022, 12, 19),
+    'alteration_date': datetime(2022, 12, 20),
+    'project_id': 2
 }
 
 _task_10: dict[str, int | str | datetime] = {
@@ -128,9 +128,9 @@ _task_10: dict[str, int | str | datetime] = {
     'details': 'Detailed description of Task number 10.',
     'status': 1,
     'priority': 4,
-    'creationDate': datetime(2022, 12, 20),
-    'alterationDate': datetime(2022, 12, 20),
-    'projectID': 2
+    'creation_date': datetime(2022, 12, 20),
+    'alteration_date': datetime(2022, 12, 20),
+    'project_id': 2
 }
 
 TASKS_LIST = [_task_01, _task_02, _task_03, _task_04, _task_05, _task_06, _task_07, _task_08, _task_09, _task_10]
