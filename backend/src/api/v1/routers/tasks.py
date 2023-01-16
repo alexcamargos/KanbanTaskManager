@@ -45,9 +45,10 @@ def get_tasks() -> MultipleTaskResponse:
 @router.get('/tasks/{task_id}', response_model=TaskResponse)
 def get_task_by_id(task_id: int) -> TaskResponse:
     """
-    Get a task by id.
+    Get a task by id, if ID is not found, raise a HTTPException with status code 404.
 
     :param task_id: The id of the task.
+
     :return TaskResponse: An instance of TaskResponse or a message if the task is not found.
     """
 
@@ -60,58 +61,26 @@ def get_task_by_id(task_id: int) -> TaskResponse:
         raise HTTPException(status_code=404, detail=f'Task with ID #{task_id} not found.')
 
 
-@router.get('/tasks/status/')
-async def get_task_by_status(task_status: TaskStatus) -> list[TaskResponse]:
+@router.get('/tasks/status/', response_model=MultipleTaskResponse)
+async def get_task_by_status(task_status: TaskStatus) -> MultipleTaskResponse:
     """
-    Get tasks filtered by status.
+    Get tasks filtered by status, if status is not found return a empty list.
 
     :param task_status: TaskResponse priority.
                           1 - Todo
                           2 - In Progress
                           3 - Done
 
-    :return list: A list of tasks with the status or a message if no tasks are found.
+    :return MultipleTaskResponse: An instance of MultipleTaskResponse.
     """
 
-    if task_status == TaskStatus.todo.value:
-        tasks = [
-            task._asdict() for task in TASKS_LIST
-            if task.status == TaskStatus.todo.value
-        ]
-
-        if tasks:
-            return tasks
-        else:
-            raise HTTPException(status_code=404, detail='No projects found.')
-    elif task_status == TaskStatus.in_progress.value:
-        tasks = [
-            task._asdict() for task in TASKS_LIST
-            if task.status == TaskStatus.in_progress.value
-        ]
-
-        if tasks:
-            return tasks
-        else:
-            raise HTTPException(status_code=404, detail='No projects found.')
-    elif task_status == TaskStatus.done.value:
-        tasks = [
-            task._asdict() for task in TASKS_LIST
-            if task.status == TaskStatus.done.value
-        ]
-
-        if tasks:
-            return tasks
-        else:
-            raise HTTPException(status_code=404, detail='No projects found.')
-    else:
-        raise HTTPException(status_code=404, detail='No projects found.')
+    return get_multiple_tasks_response([task for task in TASKS_LIST if task['status'] == task_status])
 
 
-@router.get('/tasks/priorities/')
-async def get_task_by_priority(
-        task_priority: TaskPriority) -> list[TaskResponse]:
+@router.get('/tasks/priorities/', response_model=MultipleTaskResponse)
+async def get_task_by_priority(task_priority: TaskPriority) -> MultipleTaskResponse:
     """
-    Get tasks filtered by priority.
+    Get tasks filtered by priority, if the priority is not found return an empty list.
 
     :param task_priority: TaskResponse priority.
                             1 - Big Rocks
@@ -120,69 +89,19 @@ async def get_task_by_priority(
                             4 - Regular (assim que puder)
                             5 - Low (semana que vem)
 
-    :return list: A list of tasks with the priority or a message if no tasks are found.
+    :return MultipleTaskResponse: An instance of MultipleTaskResponse.
     """
 
-    if task_priority == TaskPriority.big_rocks.value:
-        tasks = [
-            task._asdict() for task in TASKS_LIST
-            if task.priority == TaskPriority.big_rocks.value
-        ]
-
-        if tasks:
-            return tasks
-        else:
-            raise HTTPException(status_code=404, detail='No projects found.')
-    elif task_priority == TaskPriority.today.value:
-        tasks = [
-            task._asdict() for task in TASKS_LIST
-            if task.priority == TaskPriority.today.value
-        ]
-
-        if tasks:
-            return tasks
-        else:
-            raise HTTPException(status_code=404, detail='No projects found.')
-    elif task_priority == TaskPriority.high.value:
-        tasks = [
-            task._asdict() for task in TASKS_LIST
-            if task.priority == TaskPriority.high.value
-        ]
-
-        if tasks:
-            return tasks
-        else:
-            raise HTTPException(status_code=404, detail='No projects found.')
-    elif task_priority == TaskPriority.regular.value:
-        tasks = [
-            task._asdict() for task in TASKS_LIST
-            if task.priority == TaskPriority.regular.value
-        ]
-
-        if tasks:
-            return tasks
-        else:
-            raise HTTPException(status_code=404, detail='No projects found.')
-    elif task_priority == TaskPriority.low.value:
-        tasks = [
-            task._asdict() for task in TASKS_LIST
-            if task.priority == TaskPriority.low.value
-        ]
-
-        if tasks:
-            return tasks
-        else:
-            raise HTTPException(status_code=404, detail='No projects found.')
-    else:
-        raise HTTPException(status_code=404, detail='No projects found.')
+    return get_multiple_tasks_response([task for task in TASKS_LIST if task['priority'] == task_priority])
 
 
-@router.get('/tasks/')
+@router.get('/tasks/', response_model=MultipleTaskResponse)
 async def get_task_by_status_and_priority(
         task_status: TaskStatus,
-        task_priority: TaskPriority) -> list[TaskResponse]:
+        task_priority: TaskPriority) -> MultipleTaskResponse:
     """
-    Get tasks filtered by status and priority.
+    Get tasks filtered by status and priority, if status and priority are not found,
+    return an empty list.
 
     :param task_status: TaskResponse priority.
                           1 - Todo
@@ -196,242 +115,21 @@ async def get_task_by_status_and_priority(
                             4 - Regular (assim que puder)
                             5 - Low (semana que vem)
 
-    :return list: A list of tasks with the status and priority or a message if no tasks were found.
+    :return MultipleTaskResponse: An instance of MultipleTaskResponse.
     """
 
-    if task_priority == TaskPriority.big_rocks.value:
-        tasks = [
-            task for task in TASKS_LIST
-            if task.priority == TaskPriority.big_rocks.value
-               and task.status == task_status.value
-        ]
-
-        if task_status.value == TaskStatus.todo.value:
-            tasks = [
-                task._asdict() for task in tasks
-                if task.status == TaskStatus.todo.value
-            ]
-
-            if tasks:
-                return tasks
-            else:
-                raise HTTPException(status_code=404,
-                                    detail='No projects found.')
-        elif task_status.value == TaskStatus.in_progress.value:
-            tasks = [
-                task._asdict() for task in tasks
-                if task.status == TaskStatus.in_progress.value
-            ]
-
-            if tasks:
-                return tasks
-            else:
-                raise HTTPException(status_code=404,
-                                    detail='No projects found.')
-        elif task_status.value == TaskStatus.done.value:
-            tasks = [
-                task for task in tasks if task.status == TaskStatus.done.value
-            ]
-
-            if tasks:
-                return tasks
-            else:
-                raise HTTPException(status_code=404,
-                                    detail='No projects found.')
-        else:
-            raise HTTPException(status_code=404, detail='No projects found.')
-    elif task_priority == TaskPriority.today.value:
-        tasks = [
-            task for task in TASKS_LIST
-            if task.priority == TaskPriority.today.value
-               and task.status == task_status.value
-        ]
-
-        if task_status.value == TaskStatus.todo.value:
-            tasks = [
-                task for task in tasks if task.status == TaskStatus.todo.value
-            ]
-
-            if tasks:
-                return tasks
-            else:
-                raise HTTPException(status_code=404,
-                                    detail='No projects found.')
-        elif task_status.value == TaskStatus.in_progress.value:
-            tasks = [
-                task._asdict() for task in tasks
-                if task.status == TaskStatus.in_progress.value
-            ]
-
-            if tasks:
-                return tasks
-            else:
-                raise HTTPException(status_code=404,
-                                    detail='No projects found.')
-        elif task_status.value == TaskStatus.done.value:
-            tasks = [
-                task._asdict() for task in tasks
-                if task.status == TaskStatus.done.value
-            ]
-
-            if tasks:
-                return tasks
-            else:
-                raise HTTPException(status_code=404,
-                                    detail='No projects found.')
-        else:
-            raise HTTPException(status_code=404, detail='No projects found.')
-    elif task_priority == TaskPriority.high.value:
-        tasks = [
-            task for task in TASKS_LIST
-            if task.priority == TaskPriority.high.value
-               and task.status == task_status.value
-        ]
-
-        if task_status.value == TaskStatus.todo.value:
-            tasks = [
-                task._asdict() for task in tasks
-                if task.status == TaskStatus.todo.value
-            ]
-
-            if tasks:
-                return tasks
-            else:
-                raise HTTPException(status_code=404,
-                                    detail='No projects found.')
-        elif task_status.value == TaskStatus.in_progress.value:
-            tasks = [
-                task._asdict() for task in tasks
-                if task.status == TaskStatus.in_progress.value
-            ]
-
-            if tasks:
-                return tasks
-            else:
-                raise HTTPException(status_code=404,
-                                    detail='No projects found.')
-        elif task_status.value == TaskStatus.done.value:
-            tasks = [
-                task._asdict() for task in tasks
-                if task.status == TaskStatus.done.value
-            ]
-
-            if tasks:
-                return tasks
-            else:
-                raise HTTPException(status_code=404,
-                                    detail='No projects found.')
-        else:
-            raise HTTPException(status_code=404, detail='No projects found.')
-    elif task_priority == TaskPriority.regular.value:
-        tasks = [
-            task for task in TASKS_LIST
-            if task.priority == TaskPriority.regular.value
-               and task.status == task_status.value
-        ]
-
-        if task_status.value == TaskStatus.todo.value:
-            tasks = [
-                task._asdict() for task in tasks
-                if task.status == TaskStatus.todo.value
-            ]
-
-            if tasks:
-                return tasks
-            else:
-                raise HTTPException(status_code=404,
-                                    detail='No projects found.')
-        elif task_status.value == TaskStatus.in_progress.value:
-            tasks = [
-                task._asdict() for task in tasks
-                if task.status == TaskStatus.in_progress.value
-            ]
-
-            if tasks:
-                return tasks
-            else:
-                raise HTTPException(status_code=404,
-                                    detail='No projects found.')
-        elif task_status.value == TaskStatus.done.value:
-            tasks = [
-                task._asdict() for task in tasks
-                if task.status == TaskStatus.done.value
-            ]
-
-            if tasks:
-                return tasks
-            else:
-                raise HTTPException(status_code=404,
-                                    detail='No projects found.')
-        else:
-            raise HTTPException(status_code=404, detail='No projects found.')
-    elif task_priority == TaskPriority.low.value:
-        tasks = [
-            task for task in TASKS_LIST
-            if task.priority == TaskPriority.low.value
-               and task.status == task_status.value
-        ]
-
-        if task_status.value == TaskStatus.todo.value:
-            tasks = [
-                task._asdict() for task in tasks
-                if task.status == TaskStatus.todo.value
-            ]
-
-            if tasks:
-                return tasks
-            else:
-                raise HTTPException(status_code=404,
-                                    detail='No projects found.')
-        elif task_status.value == TaskStatus.in_progress.value:
-            tasks = [
-                task._asdict() for task in tasks
-                if task.status == TaskStatus.in_progress.value
-            ]
-
-            if tasks:
-                return tasks
-            else:
-                raise HTTPException(status_code=404,
-                                    detail='No projects found.')
-        elif task_status.value == TaskStatus.done.value:
-            tasks = [
-                task._asdict() for task in tasks
-                if task.status == TaskStatus.done.value
-            ]
-
-            if tasks:
-                return tasks
-            else:
-                raise HTTPException(status_code=404,
-                                    detail='No projects found.')
-        else:
-            raise HTTPException(status_code=404, detail='No projects found.')
-    else:
-        raise HTTPException(status_code=404, detail='No projects found.')
+    return get_multiple_tasks_response(
+        [task for task in TASKS_LIST if task['status'] == task_status if task['priority'] == task_priority])
 
 
-@router.get('/tasks/project/{project_id}')
-async def get_task_by_project(project_id: int) -> list[TaskResponse]:
+@router.get('/tasks/project/{project_id}', response_model=MultipleTaskResponse)
+async def get_task_by_project(project_id: int) -> MultipleTaskResponse:
     """
-    Get all tasks filtered by project id.
+    Get all tasks filtered by project id, if the project id is not found, return an empty list.
 
     :param project_id: An id of the project.
-    :return list: List of tasks or message if no tasks found.
+
+    :return MultipleTaskResponse: An instance of MultipleTaskResponse.
     """
 
-    # List all project id in TASKS_LIST.
-    projects_id = [task.project_id for task in TASKS_LIST]
-
-    if project_id in projects_id:
-        tasks = [
-            task._asdict() for task in TASKS_LIST
-            if task.project_id == project_id
-        ]
-
-        if tasks:
-            return tasks
-        else:
-            raise HTTPException(status_code=404, detail='No projects found.')
-    else:
-        raise HTTPException(status_code=404, detail='No projects found.')
+    return get_multiple_tasks_response([task for task in TASKS_LIST if task['project_id'] == project_id])
