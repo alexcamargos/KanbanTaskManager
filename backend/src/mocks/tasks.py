@@ -23,7 +23,7 @@ This is mock data for the tasks.
 
 from datetime import datetime
 
-_task_01: dict[str, int | str | datetime] = {
+_task_01= {
     'id': 1,
     'name': 'Task number 01',
     'details': 'Detailed description of Task number 01.',
@@ -34,7 +34,7 @@ _task_01: dict[str, int | str | datetime] = {
     'project_id': 1
 }
 
-_task_02: dict[str, int | str | datetime] = {
+_task_02= {
     'id': 2,
     'name': 'Task number 02',
     'details': 'Detailed description of Task number 02.',
@@ -45,7 +45,7 @@ _task_02: dict[str, int | str | datetime] = {
     'project_id': 1
 }
 
-_task_03: dict[str, int | str | datetime] = {
+_task_03= {
     'id': 3,
     'name': 'Task number 03',
     'details': 'Detailed description of Task number 03.',
@@ -56,7 +56,7 @@ _task_03: dict[str, int | str | datetime] = {
     'project_id': 2
 }
 
-_task_04: dict[str, int | str | datetime] = {
+_task_04= {
     'id': 4,
     'name': 'Task number 04',
     'details': 'Detailed description of Task number 04.',
@@ -67,7 +67,7 @@ _task_04: dict[str, int | str | datetime] = {
     'project_id': 2
 }
 
-_task_05: dict[str, int | str | datetime] = {
+_task_05= {
     'id': 5,
     'name': 'Task number 05',
     'details': 'Detailed description of Task number 05.',
@@ -78,7 +78,7 @@ _task_05: dict[str, int | str | datetime] = {
     'project_id': 3
 }
 
-_task_06: dict[str, int | str | datetime] = {
+_task_06= {
     'id': 6,
     'name': 'Task number 06',
     'details': 'Detailed description of Task number 06.',
@@ -89,7 +89,7 @@ _task_06: dict[str, int | str | datetime] = {
     'project_id': 3
 }
 
-_task_07: dict[str, int | str | datetime] = {
+_task_07= {
     'id': 7,
     'name': 'Task number 07',
     'details': 'Detailed description of Task number 07.',
@@ -100,7 +100,7 @@ _task_07: dict[str, int | str | datetime] = {
     'project_id': 1
 }
 
-_task_08: dict[str, int | str | datetime] = {
+_task_08= {
     'id': 8,
     'name': 'Task number 08',
     'details': 'Detailed description of Task number 08.',
@@ -111,7 +111,7 @@ _task_08: dict[str, int | str | datetime] = {
     'project_id': 1
 }
 
-_task_09: dict[str, int | str | datetime] = {
+_task_09= {
     'id': 9,
     'name': 'Task number 09',
     'details': 'Detailed description of Task number 09.',
@@ -122,7 +122,7 @@ _task_09: dict[str, int | str | datetime] = {
     'project_id': 2
 }
 
-_task_10: dict[str, int | str | datetime] = {
+_task_10= {
     'id': 10,
     'name': 'Task number 10',
     'details': 'Detailed description of Task number 10.',

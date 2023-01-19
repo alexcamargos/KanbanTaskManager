@@ -16,16 +16,18 @@
 
 from datetime import datetime
 
-from pydantic import Field
 from pydantic.main import BaseModel
+
+from .priorities import TaskPriority
+from .status import TaskStatus
 
 
 class TaskModel(BaseModel):
     id: int
     name: str
     details: str
-    status: int
-    priority: int
+    status: TaskStatus
+    priority: TaskPriority
     creation_date: datetime
     alteration_date: datetime
     project_id: int
