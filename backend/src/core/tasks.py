@@ -21,7 +21,7 @@ from src.models.task import TaskModel
 from src.schemas.task import TaskResponse, MultipleTaskResponse
 
 
-def get_task_response(task: dict[str, int | str | datetime]) -> TaskResponse:
+def get_task_response(task) -> TaskResponse:
     """Get single task response.
 
     :param task: A single task data.
@@ -32,7 +32,7 @@ def get_task_response(task: dict[str, int | str | datetime]) -> TaskResponse:
     return TaskResponse.from_task_instance(task=TaskModel(**task))
 
 
-def get_multiple_tasks_response(tasks: Sequence[dict[str, int | str | datetime]]) -> MultipleTaskResponse:
+def get_multiple_tasks_response(tasks) -> MultipleTaskResponse:
     """Get multiple tasks response.
 
     :param tasks: A multiple tasks data.
