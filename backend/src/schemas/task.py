@@ -21,7 +21,6 @@ This is mock data for the tasks.
 """
 
 from datetime import datetime
-from typing import Sequence
 
 from pydantic import Field
 from pydantic.main import BaseModel
@@ -45,12 +44,12 @@ class TaskResponse(BaseModel):
 
 
 class MultipleTaskResponse(BaseModel):
-    tasks: list[TaskResponse]
+    tasks: list[TaskModel]
     tasks_count: int
 
     @classmethod
     def from_multiple_task_instance(
-            cls, tasks: Sequence[TaskModel],
+            cls, tasks: list[TaskModel],
             tasks_count: int) -> "MultipleTaskResponse":
         return cls(tasks=[task for task in tasks],
-                   tasks_count=tasks_count)  # type: ignore
+                   tasks_count=tasks_count)
