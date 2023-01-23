@@ -10,6 +10,7 @@ import { Task } from '../../../models/task.model';
 })
 export class ListAllTasksComponent implements OnInit {
   allTasks: Task[] | any;
+  tasks_count: number | any;
 
   constructor(private service: KanbanTaskManagerService) {
     this.allTasks = [];
@@ -21,7 +22,10 @@ export class ListAllTasksComponent implements OnInit {
 
   getAllTasks() {
     this.service.getAllTasks().subscribe({
-      next: (response) => this.allTasks.push(response),
+      next: (response) => {
+        this.allTasks.push(response.tasks);
+        this.tasks_count = response.total;
+      },
       error: (error) => console.error(error),
       complete: () => console.info('Fetch data complete!'),
     });
