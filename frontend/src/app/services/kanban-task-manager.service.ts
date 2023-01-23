@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 
+import { TasksResponse } from '../models/tasks.response.model';
 import { Task } from '../models/task.model';
 import { Project } from '../models/project.model';
 
@@ -12,18 +13,18 @@ import { Project } from '../models/project.model';
 })
 export class KanbanTaskManagerService {
   private apiUrl: string;
-  private tasks: Task | any;
+  private tasks: TasksResponse | any;
 
   constructor(private http: HttpClient) {
     this.apiUrl = environment.apiUrl;
   }
 
-  getAllTasks(): Observable<Task> {
-    return this.http.get<Task>(`${this.apiUrl}/tasks`);
+  getAllTasks(): Observable<TasksResponse> {
+    return this.http.get<TasksResponse>(`${this.apiUrl}/tasks`);
   }
 
-  getTaskById(id: number): Observable<Task> {
-    return this.http.get<Task>(`${this.apiUrl}/tasks/${id}`);
+  getTaskById(id: number): Observable<TasksResponse> {
+    return this.http.get<TasksResponse>(`${this.apiUrl}/tasks/${id}`);
   }
 
   getAllProjects(): Observable<Project> {
