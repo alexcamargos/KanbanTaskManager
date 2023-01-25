@@ -14,6 +14,7 @@ import { TaskComponent } from './components/shared/task/task.component';
 import { AppRoutingModule } from './routes/app-routing.module';
 import { AppComponent } from './components/app-root/app-root.component';
 import { ListAllTasksComponent } from './components/tasks/list-all/list-all.component';
+import { CdkComponent } from './components/tasks/cdk/cdk.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ListAllTasksComponent } from './components/tasks/list-all/list-all.comp
     TaskComponent,
     ListAllTasksComponent,
     HeaderComponent,
+    CdkComponent,
   ],
   imports: [
     AngularMaterialModule,
