@@ -1,16 +1,9 @@
 <div class="app-wrapper">
   <div class="header">
-    <mat-toolbar color="primary">
-      <mat-icon
-        aria-hidden="false"
-        aria-label="Kanban Task Manager"
-        fontIcon="task_alt"
-      ></mat-icon>
-      <span>Kanban Task Manager</span>
-    </mat-toolbar>
+    <app-header></app-header>
   </div>
 
-  <div class="body">
+  <div class="content">
     <router-outlet>
       <app-list-all></app-list-all>
     </router-outlet>
