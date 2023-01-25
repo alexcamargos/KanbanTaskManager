@@ -8,6 +8,7 @@ import { AngularMaterialModule } from './material.module';
 import { TaskPriorityPipe } from './pipes/task-priority.pipe';
 import { TaskStatusPipe } from './pipes/task-status.pipe';
 
+import { HeaderComponent } from './components/shared/header/header.component';
 import { TaskComponent } from './components/shared/task/task.component';
 
 import { AppRoutingModule } from './routes/app-routing.module';
@@ -21,6 +22,7 @@ import { ListAllTasksComponent } from './components/tasks/list-all/list-all.comp
     TaskStatusPipe,
     TaskComponent,
     ListAllTasksComponent,
+    HeaderComponent,
   ],
   imports: [
     AngularMaterialModule,
