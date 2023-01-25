@@ -1,3 +1,18 @@
-<router-outlet>
-  <app-list-all></app-list-all>
-</router-outlet>
+<div class="app-wrapper">
+  <div class="header">
+    <mat-toolbar color="primary">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Kanban Task Manager"
+        fontIcon="task_alt"
+      ></mat-icon>
+      <span>Kanban Task Manager</span>
+    </mat-toolbar>
+  </div>
+
+  <div class="body">
+    <router-outlet>
+      <app-list-all></app-list-all>
+    </router-outlet>
+  </div>
+</div>
