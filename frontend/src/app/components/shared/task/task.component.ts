@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { KanbanTaskManagerService } from '../../../services/kanban-task-manager.service';
 
@@ -11,6 +11,7 @@ import { Task } from '../../../models/task.model';
 })
 export class TaskComponent {
   @Input() task!: Task;
+  @Output() editTask = new EventEmitter<Task>();
 
   project: string;
 
