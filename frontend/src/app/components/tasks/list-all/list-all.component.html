@@ -1,7 +1,9 @@
 <div class="container">
-  <h1>Tasks List</h1>
+  <div class="container-wrapper">
+    <h1>Tasks List</h1>
 
-  <div *ngFor="let tasks of allTasks" class="tasks-lists">
-    <app-task *ngFor="let task of tasks" [task]="task"></app-task>
+    <div class="tasks-lists">
+      <app-cdk *ngFor="let tasks of allTasks" [tasks]="tasks"></app-cdk>
+    </div>
   </div>
 </div>
