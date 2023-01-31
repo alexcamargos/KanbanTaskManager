@@ -7,14 +7,23 @@
     font-size: 1.5rem
     font-weight: bold
 
-  .backlog-wrapper
+  .backlog-wrapper,
+  .inprogress-wrapper,
+  .done-wrapper
 
   .task-list
     display: flex
     flex-direction: column
     gap: 1rem
     padding: 1rem
+    min-width: 350px
     background-color: rgba(0, 0, 0, 0.1)
+
+    .empty-label
+      font-size: 2em
+      padding-top: 10px
+      text-align: center
+      opacity: 0.2
 
   .cdk-drag-preview
     box-sizing: border-box
